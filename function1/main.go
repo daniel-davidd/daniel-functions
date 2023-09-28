@@ -8,11 +8,11 @@ import (
 )
 
 type MyEvent struct {
-	Name string `json:"name"`
+	Data string `json:"data"`
 }
 
 func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
-	return fmt.Sprintf("Hello %s!", name.Name), nil
+	return fmt.Sprintf("Hello %s!", name.Data), nil
 }
 
 func main() {
