@@ -1,11 +1,13 @@
 import logging
-import mmh3
+import jsonschema
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    msgmmh = mmh3.hash64(event['data'])
+    schema = {
+        'data' : {'type' : 'string'}
+    }
     return { 
-        'message' : msgmmh
+        'message' : jsonschema.validate(event, schema)
     }
