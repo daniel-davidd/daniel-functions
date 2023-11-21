@@ -7,7 +7,7 @@ def handler(event, context):
 
 def event_handler(msg_payload, msg_headers, inputs):
     payload =  str(msg_payload, 'utf-8')
-    as_json = json.loads(payload)
+    as_json = json.loads(payload) 
     as_json['went in lambda'] = "yessir"
 
     return bytes(json.dumps(as_json), encoding='utf-8'), msg_headers
