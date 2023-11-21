@@ -2,4 +2,4 @@ function_name: pyfunc1
 description: This is a description
 runtime: python3.9 
 dependencies: requirements.txt
-#handler:
+handler: pyfunc1.py
