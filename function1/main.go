@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 
 	"github.com/memphisdev/memphis-functions.go/memphis"
 )
@@ -19,7 +18,8 @@ func eventHandlerFunc(msgPayload []byte, msgHeaders map[string]string, inputs ma
 	json.Unmarshal(msgPayload, &event)
 
 	event.Name = fmt.Sprintf("%v %v", event.Name, event.Age)
-	os.Exit(1)
+	num := 10 / 0
+	event.Name = fmt.Sprintf("%v %v", event.Name, num)
 
 	eventBytes, _ := json.Marshal(event)
 	return eventBytes, msgHeaders, nil

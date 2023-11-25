@@ -18,7 +18,7 @@ func eventHandlerFunc(msgPayload []byte, msgHeaders map[string]string, inputs ma
 	var event Event
 	json.Unmarshal(msgPayload, &event)
 
-	time.Sleep(60 * time.Second)
+	time.Sleep(1 * time.Second)
 
 	event.Name = fmt.Sprintf("%v %v", event.Name, event.Age)
 	eventBytes, _ := json.Marshal(event)
