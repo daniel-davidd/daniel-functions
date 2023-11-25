@@ -12,7 +12,7 @@ type Event struct {
 	Age  int    `json:"age"`
 }
 
-func eventHandlerFunc(msgPayload []byte, msgHeaders [string]string, inputs [string]string) ([]byte, map[string]string, error) {
+func eventHandlerFunc(msgPayload []byte, msgHeaders map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
 	// Get data from msgPayload
 	var event Event
 	json.Unmarshal(msgPayload, &event)
