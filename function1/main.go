@@ -18,8 +18,7 @@ func eventHandlerFunc(msgPayload []byte, msgHeaders map[string]string, inputs ma
 	json.Unmarshal(msgPayload, &event)
 
 	event.Name = fmt.Sprintf("%v %v", event.Name, event.Age)
-	num := 10 / 0
-	event.Name = fmt.Sprintf("%v %v", event.Name, num)
+	panic("Panic!")
 
 	eventBytes, _ := json.Marshal(event)
 	return eventBytes, msgHeaders, nil
