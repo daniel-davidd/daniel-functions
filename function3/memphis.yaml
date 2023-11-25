@@ -1,4 +1,4 @@
-function_name: function2
+function_name: function3
 description: This is a description
 runtime: go
 dependencies: go.mod
