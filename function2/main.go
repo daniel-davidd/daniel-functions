@@ -1,22 +1,30 @@
 package main
 
 import (
-	"context"
+	"encoding/json"
 	"fmt"
+	"time"
 
-	helper "github.com
-
-	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/memphisdev/memphis-functions.go/memphis"
 )
 
-type MyEvent struct {
-	Data string `json:"data"`
+type Event struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
-func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
-	return fmt.Sprintf("Hello %s!", helper.GetName(name)), nil
+func eventHandlerFunc(msgPayload []byte, msgHeaders [string]string, inputs [string]string) ([]byte, map[string]string, error) {
+	// Get data from msgPayload
+	var event Event
+	json.Unmarshal(msgPayload, &event)
+
+	time.Sleep(60 * time.Second)
+
+	event.Name = fmt.Sprintf("%v %v", event.Name, event.Age)
+	eventBytes, _ := json.Marshal(event)
+	return eventBytes, msgHeaders, nil
 }
 
 func main() {
-	lambda.Start(HandleRequest)
+	memphis.CreateFunction(eventHandlerFunc)
 }

@@ -1,4 +1,4 @@
-module func2
+module function3
 
 go 1.19
 
